@@ -1,4 +1,4 @@
-package com.example.ackerman
+package com.example.ackerman.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
