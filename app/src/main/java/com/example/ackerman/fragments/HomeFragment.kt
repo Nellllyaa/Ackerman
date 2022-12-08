@@ -1,5 +1,6 @@
 package com.example.ackerman.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.bumptech.glide.Glide
 import com.example.ackerman.R
+import com.example.ackerman.activity.MealActivity
 import com.example.ackerman.databinding.FragmentHomeBinding
 import com.example.ackerman.pojo.Meal
 import com.example.ackerman.pojo.MealList
@@ -49,6 +51,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeMvvm.getRandomMeal()
         observerRandomMeal()
+        onRandomMealClick()
+    }
+
+    private fun onRandomMealClick() {
+        binding.randomMealCard.setOnClickListener{
+            val intent = Intent(activity, MealActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun observerRandomMeal() {
