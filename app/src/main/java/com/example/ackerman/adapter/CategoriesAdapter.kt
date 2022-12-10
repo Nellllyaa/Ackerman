@@ -12,7 +12,7 @@ import com.example.ackerman.pojo.MealsByCategory
 
 
 class CategoriesAdapter(): RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
-
+    var onItemClick:((Category)->Unit)? = null
     private var categoriesList = ArrayList<Category>()
 
     fun setCategoryList (categoriesList: List<Category>){
@@ -37,6 +37,9 @@ class CategoriesAdapter(): RecyclerView.Adapter<CategoriesAdapter.CategoryViewHo
             .load(categoriesList[position].strCategoryThumb)
             .into(holder.binding.imgCategory)
         holder.binding.categoryName.text = categoriesList[position].strCategory
+        holder.itemView.setOnClickListener{
+            onItemClick!!.invoke(categoriesList[position])
+        }
     }
 
     override fun getItemCount(): Int {
