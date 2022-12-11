@@ -45,9 +45,11 @@ class MealActivity : AppCompatActivity() {
     }
 
     private fun onFavouriteClick() {
-        binding.btnFav.setOnClickListener{
-            mealMvvm.insertMeal(it)
-            Toast.makeText(this,"",Toast.LENGTH_SHORT).show()
+        binding.btnFav.setOnClickListener {
+            mealToSave?.let {
+                mealMvvm.insertMeal(it)
+                Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
