@@ -31,15 +31,18 @@ class MealActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val mealDatabase = MealDatabase.getInstance(this)
-        val viewModelFactory = MealViewModelFactor(mealDatabase)
+        val viewModelFactor = MealViewModelFactor(mealDatabase)
 
-        mealMvvm = ViewModelProvider(this,viewModelFactory)[MealViewModel::class.java]
+        mealMvvm = ViewModelProvider(this,viewModelFactor)[MealViewModel::class.java]
 
         getMealInformationFromIntent()
+
         setInformationViews()
+
         loadingCase()
         mealMvvm.getMealDetail(mealId)
         observerMealDetailsLiveData()
+
         onYoutubeImageClick()
         onFavouriteClick()
     }
@@ -48,7 +51,7 @@ class MealActivity : AppCompatActivity() {
         binding.btnFav.setOnClickListener {
             mealToSave?.let {
                 mealMvvm.insertMeal(it)
-                Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Meal saved", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -61,7 +64,7 @@ class MealActivity : AppCompatActivity() {
     }
     private var mealToSave:Meal?=null
     private fun observerMealDetailsLiveData() {
-        mealMvvm.observerMealDetailsLiveData().observe(this,object : Observer<Meal>{
+        mealMvvm.observerMealDetailsLiveData().observe(this, object : Observer<Meal>{
             override fun onChanged(t: Meal?) {
                 onResponseCase()
                 val meal = t

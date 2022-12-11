@@ -14,6 +14,8 @@ abstract class MealDatabase : RoomDatabase(){
     companion object{
         @Volatile
         var INSTANCE: MealDatabase? = null
+
+        @Synchronized
         fun getInstance(context: Context):MealDatabase{
             if(INSTANCE==null){
                 INSTANCE=Room.databaseBuilder(context,MealDatabase::class.java,"meal.db")
