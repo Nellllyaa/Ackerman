@@ -17,7 +17,7 @@ class HomeViewModel(
     private var randomMealLiveData = MutableLiveData<Meal>()
     private var popularItemsLiveData = MutableLiveData<List<MealsByCategory>>()
     private var categoriesLiveData = MutableLiveData<List<Category>>()
-    private var favotireMealLiveData = mealDatabase.mealDao().getAllMeals()
+    private var favoriteMealLiveData = mealDatabase.mealDao().getAllMeals()
 
     fun getRandomMeal(){
         RetrofitInstance.api.getRandomMeal().enqueue(object : Callback<MealList> {
@@ -81,7 +81,7 @@ class HomeViewModel(
     }
 
     fun observeFavoritesMealsLiveData(): LiveData<List<Meal>>{
-        return favotireMealLiveData
+        return favoriteMealLiveData
     }
 }
 
