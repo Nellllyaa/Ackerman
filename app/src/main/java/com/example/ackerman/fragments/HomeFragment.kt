@@ -16,6 +16,7 @@ import com.example.ackerman.activity.MealActivity
 import com.example.ackerman.adapter.CategoriesAdapter
 import com.example.ackerman.adapter.MostPopularAdapter
 import com.example.ackerman.databinding.FragmentHomeBinding
+import com.example.ackerman.fragments.bottomsheet.MealBottomSheetFragment
 import com.example.ackerman.pojo.MealsByCategory
 import com.example.ackerman.pojo.Meal
 import com.example.ackerman.videoModel.HomeViewModel
@@ -64,6 +65,14 @@ class HomeFragment : Fragment() {
         observeCategoriesLiveData()
         prepareCategoriesRecyclerView()
         onCategoryClick()
+        onPopularItemLongClick()
+    }
+
+    private fun onPopularItemLongClick() {
+        popularItemsAdapter.onLongItemClick = { meal ->  
+            val mealBottomSheetFragment = MealBottomSheetFragment.newInstance(meal.idMeal)
+            mealBottomSheetFragment.show(childFragmentManager,"Meal Info")
+        }
     }
 
     private fun onCategoryClick() {

@@ -9,6 +9,7 @@ import com.example.ackerman.pojo.MealsByCategory
 
 class MostPopularAdapter(): RecyclerView.Adapter<MostPopularAdapter.PopularMealViewHolder>() {
     lateinit var onItemClick:((MealsByCategory)->Unit)
+    var onLongItemClick:((MealsByCategory)-> Unit)?=null
     private var mealsList = ArrayList<MealsByCategory>()
     fun setMeals (mealsList: ArrayList<MealsByCategory>){
         this.mealsList = mealsList
@@ -26,6 +27,10 @@ class MostPopularAdapter(): RecyclerView.Adapter<MostPopularAdapter.PopularMealV
             .into(holder.binding.imgPopMI)
         holder.itemView.setOnClickListener{
             onItemClick.invoke(mealsList[position])
+        }
+        holder.itemView.setOnLongClickListener {
+            onLongItemClick?.invoke(mealsList[position])
+            true
         }
     }
 

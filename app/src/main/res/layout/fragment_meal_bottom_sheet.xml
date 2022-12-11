@@ -4,16 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.bottomsheet.MealBottomSheetFragment">
+    tools:context=".fragments.bottomsheet.MealBottomSheetFragment"
+    android:id="@+id/bottom_sheet">
 
     <ImageView
         android:id="@+id/img_bottom_sheet"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="5dp"
+        android:layout_marginStart="10dp"
         android:scaleType="centerCrop"/>
 
     <LinearLayout
@@ -21,6 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginStart="120dp"
         app:layout_constraintStart_toEndOf="@+id/img_bottom_sheet"
         app:layout_constraintTop_toTopOf="@+id/img_bottom_sheet"
         app:layout_constraintEnd_toEndOf="parent"
