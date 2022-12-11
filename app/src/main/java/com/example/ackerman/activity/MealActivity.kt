@@ -16,6 +16,7 @@ import com.example.ackerman.fragments.HomeFragment
 import com.example.ackerman.pojo.Meal
 import com.example.ackerman.videoModel.MealViewModel
 import com.example.ackerman.videoModel.HomeViewModelFactor
+import com.example.ackerman.videoModel.MealViewModelFactor
 
 class MealActivity : AppCompatActivity() {
     private lateinit var mealId: String
@@ -31,7 +32,7 @@ class MealActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val mealDatabase = MealDatabase.getInstance(this)
-        val viewModelFactor = HomeViewModelFactor(mealDatabase)
+        val viewModelFactor = MealViewModelFactor(mealDatabase)
 
         mealMvvm = ViewModelProvider(this,viewModelFactor)[MealViewModel::class.java]
 
