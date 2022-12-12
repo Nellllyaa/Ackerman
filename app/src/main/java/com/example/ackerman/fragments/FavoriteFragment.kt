@@ -1,7 +1,6 @@
 package com.example.ackerman.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ackerman.R
 import com.example.ackerman.activity.MainActivity
-import com.example.ackerman.adapter.FavoriteMealsAdapter
+import com.example.ackerman.adapter.MealsAdapter
 import com.example.ackerman.databinding.FragmentFavoriteBinding
-import com.example.ackerman.databinding.FragmentHomeBinding
 import com.example.ackerman.videoModel.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -22,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar
 class FavoriteFragment : Fragment() {
     private lateinit var binding: FragmentFavoriteBinding
     private lateinit var viewModel: HomeViewModel
-    private lateinit var favoriteAdapter: FavoriteMealsAdapter
+    private lateinit var favoriteAdapter: MealsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +68,7 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun prepareRecyclerView() {
-        favoriteAdapter = FavoriteMealsAdapter()
+        favoriteAdapter = MealsAdapter()
         binding.resvFavorite.apply {
             layoutManager = GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false)
             adapter = favoriteAdapter
